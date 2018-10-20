@@ -33,21 +33,20 @@
     $(document).ready(function () {
         $('#number1').on('input', function () {
             $num1 = $('#number1').val();
-            if($.isNumeric($num1)) {
-                $('#printer').html("Invalid Number").removeClass("error");
-                if ($num1 < 1000) {
-                    $('#printer').html($num1);
-                } else if (($num1 >= 1000) && ($num1 < 100000)) {
-                    $('#printer').html(($num1 / 1000) + ' k');
-                } else if (($num1 >= 100000) && ($num1 < 1000000000)) {
-                    $('#printer').html(($num1 / 1000000) + ' m');
+            if(Math.floor($num1) == $num1 && $.isNumeric($num1)) {
+                    $('#printer').html("Invalid Number").removeClass("error");
+                    if ($num1 < 1000) {
+                        $('#printer').html($num1);
+                    } else if (($num1 >= 1000) && ($num1 < 100000)) {
+                        $('#printer').html(($num1 / 1000) + ' k');
+                    } else if (($num1 >= 100000) && ($num1 < 1000000000)) {
+                        $('#printer').html(($num1 / 1000000) + ' m');
+                    } else {
+                        $('#printer').html("Beyond Scope");
+                    }
                 } else {
-                    $('#printer').html("Beyond Scope");
-
+                    $('#printer').html("Invalid Digits").addClass("error");
                 }
-            } else{
-                $('#printer').html("Invalid Number").addClass("error");
-            }
         });
     });
 
